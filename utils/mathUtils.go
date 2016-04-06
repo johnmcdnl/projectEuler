@@ -8,10 +8,6 @@ func IsDivisor(number int, divisor int) bool {
 	return number % divisor == 0
 }
 
-/**
-All primes greater than 3 can be written in the form 6k+/-1.
-Any number n can have only one primefactor greater than n .
- */
 func IsPrime(number uint64) bool {
 	if (number == 1) {
 		return false
@@ -25,8 +21,10 @@ func IsPrime(number uint64) bool {
 		return false
 	}
 
+
 	rootN := uint64(math.Floor(math.Sqrt(float64(number))))
 	f := uint64(5)
+	//All primes greater than 3 can be written in the form 6k+/-1.
 	for f <= rootN {
 		if (number % 5 == 0) {
 			return false
@@ -41,5 +39,18 @@ func IsPrime(number uint64) bool {
 	}
 
 	return true
+}
+
+func GetNumberOfDivisors(number int) int {
+
+	var factors int
+	sqrt := int(math.Ceil(math.Sqrt(float64(number))))
+
+	for i := 2; i < sqrt; i++ {
+		if (number % i == 0) {
+			factors = factors + 2
+		}
+	}
+	return factors
 }
 
