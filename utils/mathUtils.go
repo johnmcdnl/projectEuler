@@ -8,7 +8,7 @@ func IsDivisor(number int, divisor int) bool {
 	return number % divisor == 0
 }
 
-func IsPrime(number uint64) bool {
+func IsPrime(number int) bool {
 	if (number == 1) {
 		return false
 	}else if (number < 4) {
@@ -22,17 +22,17 @@ func IsPrime(number uint64) bool {
 	}
 
 
-	rootN := uint64(math.Floor(math.Sqrt(float64(number))))
-	f := uint64(5)
+	rootN := int(math.Floor(math.Sqrt(float64(number))))
+	f := 5
 	//All primes greater than 3 can be written in the form 6k+/-1.
 	for f <= rootN {
 		if (number % 5 == 0) {
 			return false
 		}
-		if ( number % (f + uint64(2) ) == 0) {
+		if ( number % (f + int(2) ) == 0) {
 			return false
 		}
-		f = f + uint64(6)
+		f = f + int(6)
 		if (number % f == 0) {
 			return false
 		}
