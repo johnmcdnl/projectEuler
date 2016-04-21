@@ -15,11 +15,11 @@ func Problem004() int {
 	largestPalindrome := 0
 
 	for i := 999; i >= 0; i-- {
-		if (largestPalindrome / i > i) {
+		if largestPalindrome / i > i {
 			break
 		}
 		for j := 999; j >= 0; j-- {
-			if (largestPalindrome / j > i) {
+			if largestPalindrome / j > i {
 				break
 			}
 			if utils.IsPalindrome(strconv.Itoa(i * j)) && i * j > largestPalindrome {
