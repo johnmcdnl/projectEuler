@@ -13,12 +13,12 @@ What is the largest prime factor of the number 600851475143 ?
  */
 func Problem003() int {
 
-	factors := mathUtils.GetAllFactors(600851475143)
+	factors := utils.GetAllFactors(600851475143)
 
 	largestPrimeFactor := 0
 
 	for _, factor := range factors {
-		if mathUtils.IsPrime(factor) && factor > largestPrimeFactor {
+		if utils.IsPrime(factor) && factor > largestPrimeFactor {
 			largestPrimeFactor = factor
 		}
 	}

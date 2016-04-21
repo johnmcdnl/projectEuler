@@ -1,6 +1,5 @@
 package problems
 
-import ()
 import (
 	"github.com/johnmcdnl/projectEuler/utils"
 )
@@ -17,7 +16,7 @@ whose values do not exceed four million,
 find the sum of the even-valued terms.
  */
 func Problem002() int {
-	fibs := mathUtils.GenerateFibonacciUntil(4000000)
+	fibs := utils.GenerateFibonacciUntil(4000000)
 
 	sumEven := 0
 	for _, fib := range fibs {

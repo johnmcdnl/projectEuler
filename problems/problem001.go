@@ -12,7 +12,7 @@ func Problem001() int {
 	maxNum := 1000
 	sum := 0
 	for i := 1; i < maxNum; i++ {
-		if (mathUtils.IsDivisor(i, 3) || mathUtils.IsDivisor(i, 5)) {
+		if (utils.IsDivisor(i, 3) || utils.IsDivisor(i, 5)) {
 			sum += i
 		}
 	}

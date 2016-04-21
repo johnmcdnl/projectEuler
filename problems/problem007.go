@@ -12,7 +12,7 @@ func Problem007() int {
 	i := 0
 	for primeCounter < nthPrime {
 		i++
-		if (mathUtils.IsPrime(i)) {
+		if (utils.IsPrime(i)) {
 			primeCounter++
 		}
 	}
