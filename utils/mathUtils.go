@@ -11,16 +11,15 @@ func IsDivisor(number int, divisor int) bool {
 func IsPrime(number int) bool {
 	if (number == 1) {
 		return false
-	}else if (number < 4) {
+	} else if (number < 4) {
 		return true
-	}else if (number % 2 == 0) {
+	} else if (number % 2 == 0) {
 		return false
-	}else if (number < 9) {
+	} else if (number < 9) {
 		return true
-	}else if (number % 3 == 0) {
+	} else if (number % 3 == 0) {
 		return false
 	}
-
 
 	rootN := int(math.Floor(math.Sqrt(float64(number))))
 	f := 5
@@ -39,6 +38,42 @@ func IsPrime(number int) bool {
 	}
 
 	return true
+}
+
+/**
+ Retrieve all prime numbers as far as limit using Sieve of Eratosthenes
+ */
+func GetPrimesUntil(limit int) []int {
+
+	composite := make([]bool, limit)
+	composite[0] = true
+	composite[1] = true
+	composite[2] = false
+
+	primes := []int{2}
+	lastPrimeFound := 2
+
+	j := 0
+	for lastPrimeFound <= limit {
+
+		for i := lastPrimeFound; i < limit; i += lastPrimeFound {
+			composite[i] = true
+		}
+		composite[lastPrimeFound] = false
+
+		for j = lastPrimeFound + 1; j < limit; j++ {
+			if !composite[j] {
+				lastPrimeFound = j
+				break
+			}
+		}
+		if j >= limit {
+			return primes
+		}
+		primes = append(primes, lastPrimeFound)
+	}
+
+	return primes
 }
 
 func GetNumberOfDivisors(number int) int {
@@ -64,7 +99,6 @@ func GetAllFactors(num int) []int {
 	return factors
 }
 
-
 func GenerateFibonacciUntil(max int) []int {
 
 	a := 1
@@ -78,7 +112,7 @@ func GenerateFibonacciUntil(max int) []int {
 
 }
 
-func GenerateNFibonacciValues(num int) []int{
+func GenerateNFibonacciValues(num int) []int {
 	a := 1
 	b := 2
 	fibs := []int{1, 2}
