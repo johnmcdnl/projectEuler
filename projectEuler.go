@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(problems.Problem019())
+	fmt.Println(problems.Problem040())
 }
