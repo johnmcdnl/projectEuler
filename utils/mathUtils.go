@@ -43,14 +43,24 @@ func IsPrime(number int) bool {
 
 func GetNumberOfDivisors(number int) int {
 
-	var factors int
-	sqrt := int(math.Ceil(math.Sqrt(float64(number))))
+	return len(GetAllFactors(number))
+}
+
+func GetAllFactors(num int) []int {
+
+	factors := []int{1, num}
+	sqrt := int(math.Ceil(math.Sqrt(float64(num))))
 
 	for i := 2; i < sqrt; i++ {
-		if (number % i == 0) {
-			factors = factors + 2
+		if (num % i == 0) {
+			factors = append(factors, i)
+			factors = append(factors, num / i)
 		}
 	}
+	if (num % sqrt == 0) {
+		factors = append(factors, sqrt)
+	}
+
 	return factors
 }
 

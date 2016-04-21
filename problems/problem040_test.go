@@ -1,6 +1,9 @@
 package problems
 
-import "testing"
+import (
+	"testing"
+	"github.com/stretchr/testify/assert"
+)
 
 func BenchmarkProblem040(b *testing.B) {
 	for n := 0; n < b.N; n++ {
@@ -8,3 +11,6 @@ func BenchmarkProblem040(b *testing.B) {
 	}
 }
 
+func TestProblem040(t *testing.T) {
+	assert.Equal(t, Problem040(), int(210))
+}
