@@ -112,6 +112,19 @@ func GenerateFibonacciUntil(max int) []int {
 
 }
 
+func GetPrimeFactors(n int) []int {
+	pfs := []int{}
+
+	for i := 2; i <= n; i++ {
+		for (n % i == 0) {
+			pfs = append(pfs, i)
+			n /= i;
+		}
+	}
+
+	return pfs
+}
+
 func GenerateNFibonacciValues(num int) []int {
 	a := 1
 	b := 2
