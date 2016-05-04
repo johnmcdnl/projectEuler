@@ -1,6 +1,8 @@
 package problems
 
-import "github.com/johnmcdnl/projectEuler/utils"
+import (
+	"github.com/johnmcdnl/projectEuler/utils"
+)
 
 
 //Distinct primes factors
@@ -22,21 +24,48 @@ Find the first four consecutive integers to have four distinct prime factors. Wh
 
 func Problem047() int {
 
-	target := 4
 	inRowFound := 0
-	i := 1
-	for inRowFound < target {
-		unique := utils.RemoveDuplicateInts(utils.GetPrimeFactors(i))
-		if len(unique) == target {
-			inRowFound++
-		} else {
-			inRowFound = 0
-		}
-		i++
+	target := 4
+
+	primeFactors := [][]int{}
+	for i := 0; i <= target; i++ {
+		primeFactors = append(primeFactors, utils.RemoveDuplicateInts(utils.GetPrimeFactors(i)))
 	}
 
-	return i - target
+	i := target
+	for inRowFound < target {
+		primeFactors = append(primeFactors, []int{})
+		i++
+
+		firstPrime := getFirstPrimeFactor(i);
+		divideVal := i / firstPrime;
+
+		if (divideVal == 1) {
+			primeFactors[i] = []int{firstPrime}
+			inRowFound = 0
+		} else {
+			updatedSlice := append(primeFactors[firstPrime], primeFactors[divideVal]...)
+			primeFactors[i] = utils.RemoveDuplicateInts(updatedSlice)
+			if len(primeFactors[i]) == target {
+				inRowFound++
+			} else {
+				inRowFound = 0
+			}
+		}
+
+	}
+	return i - target + 1
 }
 
+func getFirstPrimeFactor(n int) int {
+	if n % 2 == 0 {
+		return 2
+	}
+	for i := 3; i <= n; i = i + 2 {
+		for (n % i == 0) {
+			return i
+		}
+	}
 
-
+	return 0
+}
