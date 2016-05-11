@@ -1,5 +1,9 @@
 package problems
 
+import (
+	"github.com/johnmcdnl/projectEuler/utils"
+)
+
 
 //Consecutive prime sum  -- https://projecteuler.net/problem=50
 
@@ -14,8 +18,46 @@ The longest sum of consecutive primes below one-thousand that adds to a prime, c
 Which prime, below one-million, can be written as the sum of the most consecutive primes?
  */
 
-func Problem050() int {
+const max = 1000000
 
-	return 0
+func Problem050() int {
+	primes := utils.GetPrimesUntilSum(max)
+
+	var primeSubArray [][]int
+	longest := 0
+
+	var longestArray []int
+
+	for i := 0; i < len(primes); i++ {
+		for j := i; j <= len(primes); j++ {
+			if j - i > longest {
+				subArray := primes[i:j]
+				if isValidSubArrayBelowMax(subArray) {
+					if len(subArray) > longest {
+						longest = len(subArray)
+						longestArray = subArray
+					}
+					primeSubArray = append(primeSubArray, subArray)
+				}
+			}
+		}
+	}
+
+	return utils.SumSlice(longestArray)
 }
 
+
+
+func isValidSubArrayBelowMax(arr []int) bool {
+
+	sum := 0
+
+	for _, val := range arr {
+		sum += val
+		if sum > max {
+			return false
+		}
+	}
+
+	return utils.IsPrime(sum)
+}

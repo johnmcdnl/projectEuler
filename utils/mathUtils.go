@@ -40,10 +40,18 @@ func IsPrime(number int) bool {
 	return true
 }
 
+func GetPrimesUntilSum(sum int) []int {
+	return getPrimesUntil(sum, sum)
+}
+
 /**
  Retrieve all prime numbers as far as limit using Sieve of Eratosthenes
  */
 func GetPrimesUntil(limit int) []int {
+	return getPrimesUntil(limit, 0)
+}
+
+func getPrimesUntil(limit int, maxSum int) []int {
 
 	composite := make([]bool, limit)
 	composite[0] = true
@@ -71,6 +79,11 @@ func GetPrimesUntil(limit int) []int {
 			return primes
 		}
 		primes = append(primes, lastPrimeFound)
+		if maxSum != 0 {
+			if SumSlice(primes) >= maxSum {
+				return primes
+			}
+		}
 	}
 
 	return primes

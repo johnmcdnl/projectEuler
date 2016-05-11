@@ -12,3 +12,11 @@ func RemoveDuplicateInts(elements []int) []int {
 	}
 	return result
 }
+
+func SumSlice(arr []int) int {
+	sum := 0
+	for _, val := range arr {
+		sum += val
+	}
+	return sum
+}
