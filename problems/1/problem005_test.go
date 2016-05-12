@@ -12,5 +12,5 @@ func BenchmarkProblem005(b *testing.B) {
 }
 
 func TestProblem005(t *testing.T) {
-	assert.Equal(t, 232792560, Problem005())
+	assert.Equal(t, 2520, Problem005())
 }
