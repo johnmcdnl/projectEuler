@@ -1,5 +1,9 @@
 package problems
 
+import (
+	"github.com/johnmcdnl/projectEuler/utils"
+)
+
 //Non-abundant sums
 
 /**
@@ -16,6 +20,37 @@ even though it is known that the greatest number that cannot be expressed as the
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
  */
 
-func Problem023() int {
-	return 0
+const max23 = 28123
+
+var abundantNumbers = make(map[int]int)
+var isSumTwoAbundantNumbers = make(map[int]bool)
+
+func Problem023() int64 {
+
+	for i := 1; i <= max23; i++ {
+		if isAbundant(i) {
+			abundantNumbers[i] = i
+		}
+	}
+
+	for _, abundantNumberOuter :=range abundantNumbers{
+		for _, abundantNumberInner :=range abundantNumbers{
+			isSumTwoAbundantNumbers[abundantNumberOuter+abundantNumberInner]=true
+		}
+	}
+
+	sum := int64(0)
+
+	for i := 0; i <= max23; i++ {
+		_, ok := isSumTwoAbundantNumbers[i];
+		if !ok{
+			sum += int64(i)
+		}
+	}
+
+	return sum
+}
+
+func isAbundant(n int) bool {
+	return utils.SumSlice(utils.RemoveDuplicateInts(utils.GetAllFactors(n))) / 2 > n
 }
