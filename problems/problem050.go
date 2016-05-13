@@ -18,10 +18,10 @@ The longest sum of consecutive primes below one-thousand that adds to a prime, c
 Which prime, below one-million, can be written as the sum of the most consecutive primes?
  */
 
-const max = 1000000
+var max50 = 1000000
 
 func Problem050() int {
-	primes := utils.GetPrimesUntilSum(max)
+	primes := utils.GetPrimesUntilSum(max50)
 
 	var primeSubArray [][]int
 	longest := 0
@@ -54,7 +54,7 @@ func isValidSubArrayBelowMax(arr []int) bool {
 
 	for _, val := range arr {
 		sum += val
-		if sum > max {
+		if sum > max50 {
 			return false
 		}
 	}
