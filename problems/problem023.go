@@ -25,7 +25,7 @@ const max23 = 28123
 var abundantNumbers = make(map[int]int)
 var isSumTwoAbundantNumbers = make(map[int]bool)
 
-func Problem023() int64 {
+func Problem023() int {
 
 	for i := 1; i <= max23; i++ {
 		if isAbundant(i) {
@@ -39,12 +39,12 @@ func Problem023() int64 {
 		}
 	}
 
-	sum := int64(0)
+	sum := 0
 
 	for i := 0; i <= max23; i++ {
 		_, ok := isSumTwoAbundantNumbers[i];
 		if !ok{
-			sum += int64(i)
+			sum += i
 		}
 	}
 
