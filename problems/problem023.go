@@ -22,20 +22,23 @@ Find the sum of all the positive integers which cannot be written as the sum of 
 
 const max23 = 28123
 
-var abundantNumbers = make(map[int]int)
+var abundantNumbers []int
 var isSumTwoAbundantNumbers = make(map[int]bool)
 
 func Problem023() int {
 
 	for i := 1; i <= max23; i++ {
 		if isAbundant(i) {
-			abundantNumbers[i] = i
+			abundantNumbers = append(abundantNumbers, i)
 		}
 	}
 
-	for _, abundantNumberOuter :=range abundantNumbers{
-		for _, abundantNumberInner :=range abundantNumbers{
-			isSumTwoAbundantNumbers[abundantNumberOuter+abundantNumberInner]=true
+	length := len(abundantNumbers)
+
+	for i := 0; i < length; i++ {
+		for j := i; j < length; j++ {
+			sum := abundantNumbers[i] + abundantNumbers[j]
+			isSumTwoAbundantNumbers[sum] = true
 		}
 	}
 
@@ -43,7 +46,7 @@ func Problem023() int {
 
 	for i := 0; i <= max23; i++ {
 		_, ok := isSumTwoAbundantNumbers[i];
-		if !ok{
+		if !ok {
 			sum += i
 		}
 	}
