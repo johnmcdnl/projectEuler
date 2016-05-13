@@ -1,0 +1,43 @@
+type nul >problem020.go
+type nul >problem021.go
+type nul >problem022.go
+type nul >problem023.go
+type nul >problem024.go
+type nul >problem025.go
+type nul >problem026.go
+type nul >problem027.go
+type nul >problem028.go
+type nul >problem029.go
+
+type nul >problem020_test.go
+type nul >problem021_test.go
+type nul >problem022_test.go
+type nul >problem023_test.go
+type nul >problem024_test.go
+type nul >problem025_test.go
+type nul >problem026_test.go
+type nul >problem027_test.go
+type nul >problem028_test.go
+type nul >problem029_test.go
+
+package problems func Problem020() int{return 0}
+package problems func Problem021() int{return 0}
+package problems func Problem022() int{return 0}
+package problems func Problem023() int{return 0}
+package problems func Problem024() int{return 0}
+package problems func Problem025() int{return 0}
+package problems func Problem026() int{return 0}
+package problems func Problem027() int{return 0}
+package problems func Problem028() int{return 0}
+package problems func Problem029() int{return 0}
+
+package problems func BenchmarkProblem020(b *testing.B) {for n := 0; n < b.N; n++ {Problem020()}}func TestProblem020(t *testing.T) {assert.Equal(t, nil, Problem020())}
+package problems func BenchmarkProblem021(b *testing.B) {for n := 0; n < b.N; n++ {Problem021()}}func TestProblem021(t *testing.T) {assert.Equal(t, nil, Problem021())}
+package problems func BenchmarkProblem022(b *testing.B) {for n := 0; n < b.N; n++ {Problem022()}}func TestProblem022(t *testing.T) {assert.Equal(t, nil, Problem022())}
+package problems func BenchmarkProblem023(b *testing.B) {for n := 0; n < b.N; n++ {Problem023()}}func TestProblem023(t *testing.T) {assert.Equal(t, nil, Problem023())}
+package problems func BenchmarkProblem024(b *testing.B) {for n := 0; n < b.N; n++ {Problem024()}}func TestProblem024(t *testing.T) {assert.Equal(t, nil, Problem024())}
+package problems func BenchmarkProblem025(b *testing.B) {for n := 0; n < b.N; n++ {Problem025()}}func TestProblem025(t *testing.T) {assert.Equal(t, nil, Problem025())}
+package problems func BenchmarkProblem026(b *testing.B) {for n := 0; n < b.N; n++ {Problem026()}}func TestProblem026(t *testing.T) {assert.Equal(t, nil, Problem026())}
+package problems func BenchmarkProblem027(b *testing.B) {for n := 0; n < b.N; n++ {Problem027()}}func TestProblem027(t *testing.T) {assert.Equal(t, nil, Problem027())}
+package problems func BenchmarkProblem028(b *testing.B) {for n := 0; n < b.N; n++ {Problem028()}}func TestProblem028(t *testing.T) {assert.Equal(t, nil, Problem028())}
+package problems func BenchmarkProblem029(b *testing.B) {for n := 0; n < b.N; n++ {Problem029()}}func TestProblem029(t *testing.T) {assert.Equal(t, nil, Problem029())}
