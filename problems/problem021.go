@@ -21,24 +21,18 @@ func Problem021() int {
 	for i := 1; i < 10000; i++ {
 		sumDivisors[i] = utils.SumSlice(utils.RemoveDuplicateInts(utils.GetAllFactors(i))) - i
 	}
-	amicablePairs := make(map[int]int)
 
-	for i := 0; i < len(sumDivisors); i++ {
-		for j := 0; j < len(sumDivisors); j++ {
-			//If d(i) = j and d(j) = i, where i ≠ j
-			if i != j {
-				if sumDivisors[i] == j {
-					if sumDivisors[j] == i {
-						amicablePairs[i] = j
-					}
-				}
-			}
+	var amicablePairs []int
+	for key, _ := range sumDivisors {
+
+		a := sumDivisors[key]
+		b := sumDivisors[a]
+		c := sumDivisors[b]
+
+		if a!=b && a==c{
+			amicablePairs = append(amicablePairs, a)
 		}
 	}
-	sumPairs := 0
-	for key := range amicablePairs {
-		sumPairs += key
-	}
 
-	return sumPairs
+	return utils.SumSlice(utils.RemoveDuplicateInts(amicablePairs))
 }
