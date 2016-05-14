@@ -1,10 +1,7 @@
 package problems
 
-import (
-	"strings"
-	"strconv"
-	"time"
-)
+import "time"
+
 
 /**
 You are given the following information, but you may prefer to do some research for yourself.
@@ -24,16 +21,15 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 
 func Problem019() int {
 
-	dayCounter := 0
+	date, _ := time.Parse("2006-1-2", "1901-01-01")
+	endDate, _ := time.Parse("2006-1-2", "2000-12-31")
 
-	for year := 1901; year <= 2000; year++ {
-		for month := 1; month <= 12; month++ {
-			s := []string{strconv.Itoa(year), strconv.Itoa(month), "01", };
-			date, _ :=  time.Parse("2006-1-2", strings.Join(s, "-"))
-			if date.Weekday().String() == "Sunday" {
-				dayCounter++
-			}
+	dayCounter := 0
+	for date.Before(endDate) {
+		if date.Weekday() == time.Sunday{
+			dayCounter++
 		}
+		date = date.AddDate(0,1,0)
 	}
 
 	return dayCounter
