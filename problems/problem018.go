@@ -1,6 +1,5 @@
 package problems
 
-import "github.com/johnmcdnl/projectEuler/utils"
 
 // Maximum path sum 1
 //By starting at the top of the triangle below and moving to adjacent numbers on the row below,
@@ -51,16 +50,6 @@ func Problem018() int {
 	triangle = append(triangle, []int{63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31})
 	triangle = append(triangle, []int{4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23})
 
-	for len(triangle) > 2 {
-		newBottom := []int{}
-		secondLast := triangle[len(triangle) - 2]
-		bottom := triangle[len(triangle) - 1]
 
-		for i := 0; i < len(bottom) - 1; i++ {
-			newBottom = append(newBottom, utils.Max(bottom[i] + secondLast[i], bottom[i + 1] + secondLast[i]))
-		}
-		triangle = append(triangle[:len(triangle) - 2], newBottom)
-	}
-
-	return utils.Max(triangle[1][0] + triangle[0][0], triangle[1][1] + triangle[0][0])
+	return MaximumNumbersThroughTriangle(triangle)
 }
