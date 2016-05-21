@@ -1,5 +1,7 @@
 package problems
 
+import "github.com/johnmcdnl/projectEuler/utils"
+
 // Maximum path sum 1
 //By starting at the top of the triangle below and moving to adjacent numbers on the row below,
 // the maximum total from top to bottom is 23.
@@ -55,17 +57,10 @@ func Problem018() int {
 		bottom := triangle[len(triangle) - 1]
 
 		for i := 0; i < len(bottom) - 1; i++ {
-			newBottom = append(newBottom, Max(bottom[i] + secondLast[i], bottom[i + 1] + secondLast[i]))
+			newBottom = append(newBottom, utils.Max(bottom[i] + secondLast[i], bottom[i + 1] + secondLast[i]))
 		}
 		triangle = append(triangle[:len(triangle) - 2], newBottom)
 	}
 
-	return Max(triangle[1][0] + triangle[0][0], triangle[1][1] + triangle[0][0])
-}
-
-func Max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
+	return utils.Max(triangle[1][0] + triangle[0][0], triangle[1][1] + triangle[0][0])
 }
