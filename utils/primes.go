@@ -1,7 +1,5 @@
 package utils
 
-import "math"
-
 func GetPrimeFactors(n int) []int {
 	pfs := []int{}
 
@@ -77,10 +75,9 @@ func IsPrime(number int) bool {
 		return false
 	}
 
-	rootN := int(math.Floor(math.Sqrt(float64(number))))
 	f := 5
 	//All primes greater than 3 can be written in the form 6k+/-1.
-	for f <= rootN {
+	for f * f <= number {
 		if (number % 5 == 0) {
 			return false
 		}
