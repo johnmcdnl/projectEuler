@@ -23,34 +23,21 @@ func Problem037() int {
 	appendValues := []string{"1", "3", "7", "9"}
 
 	counter := 0
+	truncatablePrimes := []int{}
 
-	truncatablePrimes := make(map[string]bool)
-	for _, val := range appendValues {
-		truncatablePrimes[val] = true
-	}
-
-	counter:
+	loop:
 	for {
 		currentList = getNextSetOfCandidates(currentList, appendValues)
 		for _, value := range currentList {
 			asNum, _ := strconv.Atoi(value);
 			if utils.IsPrime(asNum) {
-				if isTruncatablePrime(truncatablePrimes, value) {
+				if isTruncatablePrime(value) {
 					counter++
-					truncatablePrimes[value] = true
+					truncatablePrimes = append(truncatablePrimes, asNum)
 				}
 			}
 			if counter == 11 {
-				break counter
-			}
-		}
-	}
-
-	primes := []int{}
-	for key := range truncatablePrimes {
-		if len(key) > 1 {
-			if num, err := strconv.Atoi(key); err == nil {
-				primes = append(primes, num)
+				break loop
 			}
 		}
 	}
@@ -58,7 +45,7 @@ func Problem037() int {
 	return utils.SumSlice(primes)
 }
 
-func isTruncatablePrime(found map[string]bool, number string) bool {
+func isTruncatablePrime(number string) bool {
 
 	for i := 1; i < len(number); i++ {
 		if asNum, _ := strconv.Atoi(number[:len(number) - i]); !utils.IsPrime(asNum) {
@@ -86,6 +73,6 @@ func getNextSetOfCandidates(currentList, appendValues  []string) []string {
 			}
 		}
 	}
-	return newList
 
+	return newList
 }
