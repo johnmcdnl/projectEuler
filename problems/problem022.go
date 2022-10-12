@@ -1,5 +1,11 @@
 package problems
 
+import (
+	"os"
+	"sort"
+	"strings"
+)
+
 //Names scores
 
 /**
@@ -17,5 +23,36 @@ What is the total of all the name scores in the file?
 */
 
 func Problem022() int {
-	return 0
+	var sum = 0
+	for index, name := range sortedDataset() {
+		nameVal := nameValue(name)
+		sum += (index + 1) * nameVal
+	}
+	return sum
+}
+
+func nameValue(name string) int {
+	nameRune := []rune(name)
+
+	var value = 0
+	for _, r := range nameRune {
+		value += int(r) - 64
+	}
+	return value
+}
+
+func sortedDataset() []string {
+	data := dataset()
+	sort.Slice(data, func(i, j int) bool {
+		return data[i] < data[j]
+	})
+	return data
+}
+
+func dataset() []string {
+	data, err := os.ReadFile("./data/p022_names.txt")
+	if err != nil {
+		panic(err)
+	}
+	return strings.Split(strings.ReplaceAll(string(data), `"`, ``), ",")
 }
